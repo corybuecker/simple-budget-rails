@@ -1,0 +1,9 @@
+<%= link_to "New Account", new_account_path %>
+
+<div class="flex flex-row gap-4">
+  <% accounts.each do |account| %>
+    <%= turbo_frame_tag dom_id(account) do %>
+      <%= render account %>
+    <% end %>
+  <% end %>
+</div>
