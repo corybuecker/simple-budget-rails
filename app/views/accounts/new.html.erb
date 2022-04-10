@@ -1,0 +1,5 @@
+<%= form_with model: Account.new, builder: MaterialFormBuilder, data: { controller: 'material-form' } do |f| %>
+  <%= f.text_field :name %>
+  <%= f.number_field :balance  %>
+  <%= f.button "Submit", type:"submit", class: "mdc-button--raised" %>
+<% end %>

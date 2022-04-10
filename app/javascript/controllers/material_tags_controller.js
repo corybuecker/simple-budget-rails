@@ -1,7 +1,8 @@
 import { Controller } from "@hotwired/stimulus"
+import { MDCRipple } from "@material/ripple"
 
 export default class extends Controller {
   connect() {
-    this.element.textContent = "Hello World!"
+    MDCRipple.attachTo((this.element.querySelector("button")))
   }
 }
