@@ -1,9 +1,9 @@
 import { Controller } from "@hotwired/stimulus"
-import { MDCSnackbar } from '@material/snackbar'
+import { MDCBanner } from '@material/banner';
 
 export default class extends Controller {
   connect() {
-    const snackbar = new MDCSnackbar(this.element)
-    snackbar.open()
+    const banner = new MDCBanner(document.querySelector('.mdc-banner'))
+    banner.open()
   }
 }

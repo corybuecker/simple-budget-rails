@@ -1,4 +1,6 @@
 # frozen_string_literal: true
 
 class Saving < ApplicationRecord
+  validates :name, presence: true
+  validates :amount, presence: true, numericality: { greater_than_or_equal_to: 0 }
 end
