@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  with_options only: %i[index new create edit update] do
+  with_options except: [:show] do
     resources :accounts
     resources :goals
     resources :users

@@ -1,2 +1,10 @@
-<%= account.name %>
-<%= link_to "Edit", edit_account_path(account) %>
+<tr id="<%= dom_id(account) %>" class="mdc-data-table__row">
+  <th class="mdc-data-table__cell" scope="row"><%= account.name %></th>
+  <td class="mdc-data-table__cell mdc-data-table__cell--numeric"><%= number_to_currency(account.balance, precision: 0) %></td>
+  <td class="mdc-data-table__cell">
+    <%= link_to "Edit", edit_account_path(account), data: { turbo_frame: :modal } %>
+    <%= form_with model: account, method: :delete, class: 'inline' do %>
+      <button type="submit">Delete</button>
+    <% end %>
+  </td>
+</tr>

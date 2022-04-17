@@ -1,7 +1,3 @@
-<%= turbo_frame_tag dom_id(account) do %>
-  <%= form_with model: account, builder: MaterialFormBuilder, data: { controller: 'material-form' } do |f| %>
-    <%= f.text_field :name %>
-    <%= f.number_field :balance  %>
-    <%= f.button "Submit", type:"submit", class: "mdc-button--raised" %>
-  <% end %>
+<%= turbo_frame_tag :modal do %>
+  <%= render partial: 'form', locals: { user:, account: } %>
 <% end %>

@@ -1,15 +1,19 @@
-<% flash.each do |type, message| %>
-  <aside class="mdc-snackbar" data-controller="flash">
-    <div class="mdc-snackbar__surface" role="status" aria-relevant="additions">
-      <div class="mdc-snackbar__label" aria-atomic="false">
-        <%= message %>
-      </div>
-      <div class="mdc-snackbar__actions" aria-atomic="true">
-        <button type="button" class="mdc-button mdc-snackbar__action">
-          <div class="mdc-button__ripple"></div>
-          <span class="mdc-button__label">Close</span>
-        </button>
+<div id="flash">
+  <% if flash[:error].present? %>
+    <div class="mdc-banner" role="banner" data-controller="flash">
+      <div class="mdc-banner__content" role="alertdialog" aria-live="assertive">
+        <div class="mdc-banner__graphic-text-wrapper">
+          <div class="mdc-banner__text">
+            <%= flash[:error] %>
+          </div>
+        </div>
+        <div class="mdc-banner__actions">
+          <button type="button" class="mdc-button mdc-banner__primary-action">
+            <div class="mdc-button__ripple"></div>
+            <div class="mdc-button__label">Close</div>
+          </button>
+        </div>
       </div>
     </div>
-  </aside>
-<% end %>
+  <% end %>
+</div>

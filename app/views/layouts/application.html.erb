@@ -16,6 +16,7 @@
   </head>
 
   <body>
+    <%= render 'shared/flash' %>
     <div class="flex divide-x">
       <nav class="pt-[8px] h-screen">
         <div class="grid grid-cols-1">
@@ -40,9 +41,6 @@
       <main class="px-8 pt-8">
         <%= yield %>
       </main>
-    </div>
-    <div id="flash">
-      <%= render 'shared/flash' %>
     </div>
   </body>
 </html>
