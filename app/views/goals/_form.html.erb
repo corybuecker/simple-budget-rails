@@ -7,16 +7,28 @@
           <div class="pb-4">
             <%= f.text_field :name %>
           </div>
-          <%= f.number_field :amount  %>
+          <div class="pb-4">
+            <%= f.number_field :amount %>
+          </div>
+          <div class="pb-4">
+            <%= f.date_field :target_date, min: 1.day.from_now, class: 'w-full' %>
+          </div>
+          <div class="flex flex-col">
+            <%= f.radio_button :frequency, "daily", label: "Daily" %>
+            <%= f.radio_button :frequency, "weekly", label: "Weekly" %>
+            <%= f.radio_button :frequency, "monthly", label: "Monthly" %>
+            <%= f.radio_button :frequency, "quarterly", label: "Quarterly" %>
+            <%= f.radio_button :frequency, "yearly", label: "Yearly" %>
+          </div>
+
           <div class="mdc-dialog__actions">
-            <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close">
-              <div class="mdc-button__ripple"></div>
-              <span class="mdc-button__label">Cancel</span>
-            </button>
-            <button type="submit" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="accept">
-              <div class="mdc-button__ripple"></div>
-              <span class="mdc-button__label">Save</span>
-            </button>
+            <div class='mdc-touch-target-wrapper' data-material-form-target="button">
+              <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close" >
+                <div class="mdc-button__ripple"></div>
+                <span class="mdc-button__label">Cancel</span>
+              </button>
+            </div>
+            <%= f.button 'save', class: 'mdc-dialog__button', data: { mdc_dialog_action: 'accept' } %>
           </div>
         <% end %>
       </div>

@@ -1,6 +1,8 @@
 <tr id="<%= dom_id(goal) %>" class="mdc-data-table__row">
   <th class="mdc-data-table__cell" scope="row"><%= goal.name %></th>
   <td class="mdc-data-table__cell mdc-data-table__cell--numeric"><%= number_to_currency(goal.amount, precision: 0) %></td>
+  <td class="mdc-data-table__cell"><%= goal.target_date %></td>
+  <td class="mdc-data-table__cell"><%= goal.frequency.capitalize %></td>
   <td class="mdc-data-table__cell">
     <%= link_to "Edit", edit_goal_path(goal), data: { turbo_frame: :modal } %>
     <%= form_with model: goal, method: :delete, class: 'inline' do %>

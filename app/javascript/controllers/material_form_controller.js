@@ -1,10 +1,24 @@
 import { Controller } from "@hotwired/stimulus"
 import { MDCRipple } from "@material/ripple"
 import { MDCTextField } from '@material/textfield'
+import { MDCFormField } from '@material/form-field';
+import { MDCRadio } from '@material/radio';
+
 
 export default class extends Controller {
-  connect() {
-    MDCRipple.attachTo((this.element.querySelector("button")))
-    this.element.querySelectorAll('.mdc-text-field').forEach(el => { new MDCTextField(el) })
+  static targets = ["radio", "textfield", "button"]
+
+  radioTargetConnected(element) {
+    const formField = new MDCFormField(element)
+    const radio = new MDCRadio(element.querySelector('.mdc-radio'))
+    formField.input = radio
+  }
+
+  textfieldTargetConnected(element) {
+    new MDCTextField(element)
+  }
+
+  buttonTargetConnected(element) {
+    new MDCRipple(element)
   }
 }
