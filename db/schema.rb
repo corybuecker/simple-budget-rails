@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_17_001528) do
 
   # Custom types defined in this database.
   # Note that some types may not work with other database engines. Be careful if changing database.
-  create_enum "goal_frequencies", ["weekly", "daily", "monthly", "quarterly", "yearly"]
+  create_enum "goal_recurrances", ["weekly", "daily", "monthly", "quarterly", "yearly", "never"]
 
   create_table "accounts", force: :cascade do |t|
     t.string "name", null: false
@@ -35,7 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_17_001528) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.date "target_date", null: false
-    t.enum "frequency", default: "monthly", null: false, enum_type: "goal_frequencies"
+    t.enum "recurrance", default: "monthly", null: false, enum_type: "goal_recurrances"
     t.index ["user_id"], name: "index_goals_on_user_id"
   end
 

@@ -5,11 +5,11 @@ one:
   user: one
   amount: 1
   target_date: "2030-01-01"
-  frequency: "monthly"
+  recurrance: "monthly"
 
 two:
   name: MyString2
   user: one
   amount: 1
   target_date: "2030-01-01"
-  frequency: "monthly"
+  recurrance: "monthly"
