@@ -2,10 +2,10 @@
 
 one:
   name: MyString
-  amount: 1
+  balance: 1
   debt: false
 
 two:
-  name: MyString
-  amount: 1
+  name: MyString2
+  balance: 1
   debt: false
