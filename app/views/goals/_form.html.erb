@@ -14,11 +14,12 @@
             <%= f.date_field :target_date, min: 1.day.from_now, class: 'w-full' %>
           </div>
           <div class="flex flex-col">
-            <%= f.radio_button :frequency, "daily", label: "Daily" %>
-            <%= f.radio_button :frequency, "weekly", label: "Weekly" %>
-            <%= f.radio_button :frequency, "monthly", label: "Monthly" %>
-            <%= f.radio_button :frequency, "quarterly", label: "Quarterly" %>
-            <%= f.radio_button :frequency, "yearly", label: "Yearly" %>
+            <%= f.radio_button :recurrance, "daily", label: "Daily" %>
+            <%= f.radio_button :recurrance, "weekly", label: "Weekly" %>
+            <%= f.radio_button :recurrance, "monthly", label: "Monthly" %>
+            <%= f.radio_button :recurrance, "quarterly", label: "Quarterly" %>
+            <%= f.radio_button :recurrance, "yearly", label: "Yearly" %>
+            <%= f.radio_button :recurrance, "never", label: "Never" %>
           </div>
 
           <div class="mdc-dialog__actions">
