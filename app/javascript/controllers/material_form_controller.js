@@ -6,7 +6,7 @@ import { MDCRadio } from '@material/radio';
 
 
 export default class extends Controller {
-  static targets = ["radio", "textfield", "button"]
+  static targets = ["radio", "textfield", "button", "checkbox"]
 
   radioTargetConnected(element) {
     const formField = new MDCFormField(element)
@@ -20,5 +20,11 @@ export default class extends Controller {
 
   buttonTargetConnected(element) {
     new MDCRipple(element)
+  }
+
+  checkboxTargetConnected(element) {
+    const formField = new MDCFormField(element)
+    const radio = new MDCRadio(element.querySelector('.mdc-checkbox'))
+    formField.input = radio
   }
 }

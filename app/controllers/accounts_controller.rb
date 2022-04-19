@@ -37,7 +37,7 @@ class AccountsController < ApplicationController
   private
 
   def account_params
-    params.require(:account).permit(:name, :balance)
+    params.require(:account).permit(:name, :balance, :debt)
   end
 
   def user

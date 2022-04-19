@@ -4,10 +4,11 @@
       <h2 class="mdc-dialog__title" id="my-dialog-title">New account</h2>
       <div class="mdc-dialog__content" id="my-dialog-content" data-modal-target='content'>
         <%= form_with model: account, builder: MaterialFormBuilder, data: { controller: 'material-form' } do |f| %>
-          <div class="pb-4">
+          <div class="flex flex-col gap-2">
             <%= f.text_field :name %>
+            <%= f.number_field :balance %>
+            <%= f.check_box :debt, label: "Debt?" %>
           </div>
-          <%= f.number_field :balance  %>
           <div class="mdc-dialog__actions">
             <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close">
               <div class="mdc-button__ripple"></div>
