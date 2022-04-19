@@ -14,4 +14,4 @@ RUN bundle
 COPY . /app
 
 RUN bundle binstubs --all
-RUN bin/rails assets:precompile
+RUN SECRET_KEY_BASE=1 RAILS_ENV=production bin/rails assets:precompile
