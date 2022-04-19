@@ -18,8 +18,8 @@ class LoginController < ApplicationController
   end
 
   def host_for_callback
-    # Normally, I wouldn't consider this secure. However, the OIDC protocol
-    # requires the identity provider to preapproved ahead of time.
+    return URI.parse('https://budget.corybuecker.com').to_s if Rails.env.production?
+
     URI.parse(request.host_with_port).to_s
   end
 
