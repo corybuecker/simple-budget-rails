@@ -14,3 +14,4 @@ RUN bundle
 COPY . /app
 
 RUN bundle binstubs --all
+RUN bin/rails assets:precompile
