@@ -23,8 +23,14 @@ module Login
       head :bad_request
     end
 
+    def host_for_callback
+      # Normally, I wouldn't consider this secure. However, the OIDC protocol
+      # requires the identity provider to preapproved ahead of time.
+      URI.parse(request.host_with_port).to_s
+    end
+
     def exchange_code
-      @id_token = TokenExchanger.exchange_code(code: params[:code])
+      @id_token = TokenExchanger.exchange_code(code: params[:code], redirect_host: host_for_callback)
 
       head :bad_request unless User.exists?(email: @id_token['email'])
     end
