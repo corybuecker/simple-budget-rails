@@ -9,6 +9,7 @@ pin '@hotwired/stimulus-loading', to: 'stimulus-loading.js', preload: true
 pin_all_from 'app/javascript/controllers', under: 'controllers'
 
 pin '@material/banner', to: 'https://ga.jspm.io/npm:@material/banner@13.0.0/index.js'
+pin '@material/checkbox', to: 'https://ga.jspm.io/npm:@material/checkbox@13.0.0/index.js'
 pin '@material/data-table', to: 'https://ga.jspm.io/npm:@material/data-table@13.0.0/index.js'
 pin '@material/dialog', to: 'https://ga.jspm.io/npm:@material/dialog@13.0.0/index.js'
 pin '@material/form-field', to: 'https://ga.jspm.io/npm:@material/form-field@13.0.0/index.js'

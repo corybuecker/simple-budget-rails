@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class MaterialFormBuilder < ActionView::Helpers::FormBuilder
-  delegate :tag, :button_tag, to: :template
+  delegate :content_tag, :tag, :button_tag, to: :template
 
   # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/MethodLength
@@ -18,6 +18,26 @@ class MaterialFormBuilder < ActionView::Helpers::FormBuilder
             tag.div(class: 'mdc-radio__ripple')
         end +
           tag.label(for: "#{object_name}_#{method}_#{tag_value}", class: 'mdc-radio__label') do
+            options[:label]
+          end
+      end
+    end
+  end
+
+  def check_box(method, options = {}, checked_value = '1', unchecked_value = '0')
+    tag.div(class: 'mdc-touch-target-wrapper') do
+      tag.div(class: 'mdc-form-field', data: { material_form_target: 'checkbox' }) do
+        tag.div(class: 'mdc-checkbox mdc-checkbox--touch') do
+          super(method, options.merge(class: 'mdc-checkbox__native-control'), checked_value, unchecked_value) +
+            tag.div(class: 'mdc-checkbox__background') do
+              tag.svg(class: 'mdc-checkbox__checkmark', viewBox: '0 0 24 24') do
+                tag.path(class: 'mdc-checkbox__checkmark-path', fill: 'none', d: 'M1.73,12.91 8.1,19.28 22.79,4.59')
+              end +
+                tag.div(class: 'mdc-checkbox__mixedmark')
+            end +
+            tag.div(class: 'mdc-radio__ripple')
+        end +
+          tag.label(for: "#{object_name}_#{method}", class: 'mdc-radio__label') do
             options[:label]
           end
       end

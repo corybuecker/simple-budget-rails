@@ -10,35 +10,41 @@ class Goal < ApplicationRecord
   def accumlated_amount
     return amount if target_date.past?
 
-    daily_accumulation * days_remaining
+    daily_accumulation * days_saved
+  end
+
+  def daily_accumulation
+    amount.to_f / (goal_length.to_f / 1.day)
+  end
+
+  def days_saved
+    return 0 if goal_started.future?
+
+    Time.zone.today - goal_started
+  end
+
+  def goal_started
+    return created_at.to_date if recurrance == 'never'
+
+    target_date - goal_length
   end
 
   private
 
-  def daily_accumulation
-    amount.to_f / (target_date - goal_started).to_i
-  end
-
-  def days_remaining
-    (Time.zone.today - goal_started)
-  end
-
-  # rubocop:disable Metrics/AbcSize,Metrics/MethodLength
-  def goal_started
+  # rubocop:disable Metrics/MethodLength
+  def goal_length
     case recurrance
     when 'daily'
-      1.day.ago.to_date
+      1.day
     when 'weekly'
-      1.week.ago.to_date
-    when 'monthly'
-      1.month.ago.to_date
+      1.week
+    when 'never', 'monthly'
+      1.month
     when 'quarterly'
-      3.months.ago.to_date
+      3.months
     when 'yearly'
-      1.year.ago.to_date
-    else
-      Time.zone.today.beginning_of_month
+      1.year
     end
   end
-  # rubocop:enable Metrics/AbcSize,Metrics/MethodLength
+  # rubocop:enable Metrics/MethodLength
 end
