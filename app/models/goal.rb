@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 class Goal < ApplicationRecord
+  RECURRANCES = %w[never daily weekly monthly quarterly yearly].freeze
+
   belongs_to :user
   validates :name, presence: true
   validates :amount, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :target_date, presence: true, future: true
-  validates :recurrance, presence: true, inclusion: { in: %w[daily weekly monthly quarterly yearly never] }
+  validates :recurrance, presence: true, inclusion: { in: RECURRANCES }
 
   def accumlated_amount
     return amount if target_date.past?
@@ -28,8 +30,6 @@ class Goal < ApplicationRecord
 
     target_date - goal_length
   end
-
-  private
 
   # rubocop:disable Metrics/MethodLength
   def goal_length
