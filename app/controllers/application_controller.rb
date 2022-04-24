@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  include ActionView::RecordIdentifier
   before_action :require_identity
 
   def render_flash_error(error)

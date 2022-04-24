@@ -4,7 +4,7 @@ require 'test_helper'
 
 class MaterialFormBuilderTest < ActionView::TestCase
   def form_with
-    @output_buffer = super(url: '/', builder: MaterialFormBuilder)
+    @output_buffer = super(model: Account.new, builder: MaterialFormBuilder)
   end
 
   test 'single button' do

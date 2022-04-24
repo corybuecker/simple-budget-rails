@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-if ! command -v foreman &> /dev/null
+if ! command -v overmind &> /dev/null
 then
-  echo "Installing foreman..."
-  gem install foreman
+  echo "Could not find overmind. Please install it with brew, apt, etc."
+  exit 1
 fi
 
-foreman start -f Procfile.dev
+overmind start -f Procfile.dev

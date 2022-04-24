@@ -91,20 +91,34 @@ class MaterialFormBuilder < ActionView::Helpers::FormBuilder
     options.except!(:class)
 
     label = options.delete(:label) || method.to_s.titleize
-
+    options[:id] = "#{object_name}_#{method}"
     # Fix for known Safari bug, https://github.com/material-components/material-components-web/issues/5879
     options[:placeholder] = options[:placeholder] || ' '
+    options[:aria] = {
+      labelledby: options[:id],
+      controls: "#{options[:id]}-helper",
+      describedby: "#{options[:id]}-helper"
+    }
+    field_helper_classes = [
+      'mdc-text-field-helper-text',
+      'mdc-text-field-helper-text--persistent',
+      'mdc-text-field-helper-text--validation-msg'
+    ]
     tag.div(data: { material_form_target: 'textfield' }) do
       tag.label(class: label_classes.compact.uniq.join(' ').strip) do
         tag.span(class: 'mdc-text-field__ripple') +
           tag.span(class: 'mdc-floating-label', id: options[:id]) do
             label
           end + yield + tag.span(class: 'mdc-line-ripple')
-      end
+      end +
+        content_tag(:div, class: 'mdc-text-field-helper-line', data: { material_form_target: 'textfieldHelper' }) do
+          content_tag(:div, class: field_helper_classes, aria: { hidden: true }, id: "#{options[:id]}-helper") do
+            @object.errors[method]&.first
+          end
+        end
     end
   end
   # rubocop:enable Metrics/MethodLength
   # rubocop:enable Metrics/AbcSize
-
   attr_reader :template
 end

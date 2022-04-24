@@ -16,6 +16,8 @@ pin '@material/form-field', to: 'https://ga.jspm.io/npm:@material/form-field@13.
 pin '@material/radio', to: 'https://ga.jspm.io/npm:@material/radio@13.0.0/index.js'
 pin '@material/ripple', to: 'https://ga.jspm.io/npm:@material/ripple@13.0.0/index.js'
 pin '@material/textfield', to: 'https://ga.jspm.io/npm:@material/textfield@13.0.0/index.js'
+pin '@material/textfield/helper-text', to: 'https://ga.jspm.io/npm:@material/textfield@13.0.0/helper-text/index.js'
+
 pin '@material/animation/animationframe', to: 'https://ga.jspm.io/npm:@material/animation@13.0.0/animationframe.js'
 pin '@material/animation/util', to: 'https://ga.jspm.io/npm:@material/animation@13.0.0/util.js'
 pin '@material/base/component', to: 'https://ga.jspm.io/npm:@material/base@13.0.0/component.js'

@@ -13,7 +13,8 @@ class AccountsController < ApplicationController
     account = user.accounts.new(account_params)
     return render locals: { account:, user: } if account.save
 
-    render_flash_error(account.errors.full_messages.join(', ').strip)
+    render turbo_stream: turbo_stream.replace(:form, partial: 'form', locals: { account:, user: }),
+           status: :unprocessable_entity
   end
 
   def edit
