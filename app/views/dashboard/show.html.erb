@@ -1,1 +1,6 @@
-test
+<div class="text-4xl">
+  <%= total %>
+</div>
+<div class="text-4xl">
+  <%= total / (Time.days_in_month(Time.zone.today.month) - Time.zone.today.day) %>
+</div>
