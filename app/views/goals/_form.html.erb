@@ -1,39 +1,29 @@
-<div class="mdc-dialog" data-controller='modal'>
-  <div class="mdc-dialog__container">
-    <div class="mdc-dialog__surface" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title" aria-describedby="my-dialog-content">
-      <h2 class="mdc-dialog__title" id="my-dialog-title">New goal</h2>
-      <div class="mdc-dialog__content" id="my-dialog-content" data-modal-target='content'>
-        <%= form_with model: goal, builder: MaterialFormBuilder, data: { controller: 'material-form' } do |f| %>
-          <div class="pb-4">
-            <%= f.text_field :name %>
-          </div>
-          <div class="pb-4">
-            <%= f.number_field :amount %>
-          </div>
-          <div class="pb-4">
-            <%= f.date_field :target_date, min: 1.day.from_now, class: 'w-full' %>
-          </div>
-          <div class="flex flex-col">
-            <%= f.radio_button :recurrance, "daily", label: "Daily" %>
-            <%= f.radio_button :recurrance, "weekly", label: "Weekly" %>
-            <%= f.radio_button :recurrance, "monthly", label: "Monthly" %>
-            <%= f.radio_button :recurrance, "quarterly", label: "Quarterly" %>
-            <%= f.radio_button :recurrance, "yearly", label: "Yearly" %>
-            <%= f.radio_button :recurrance, "never", label: "Never" %>
-          </div>
-
-          <div class="mdc-dialog__actions">
-            <div class='mdc-touch-target-wrapper' data-material-form-target="button">
-              <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close" >
-                <div class="mdc-button__ripple"></div>
-                <span class="mdc-button__label">Cancel</span>
-              </button>
-            </div>
-            <%= f.button 'save', class: 'mdc-dialog__button', data: { mdc_dialog_action: 'accept' } %>
-          </div>
-        <% end %>
-      </div>
-    </div>
+<%= form_with model: goal, builder: MaterialFormBuilder, data: { controller: 'material-form' }, id: :form do |f| %>
+  <div class="pb-4">
+    <%= f.text_field :name %>
   </div>
-  <div class="mdc-dialog__scrim"></div>
-</div>
+  <div class="pb-4">
+    <%= f.number_field :amount %>
+  </div>
+  <div class="pb-4">
+    <%= f.date_field :target_date, min: 1.day.from_now, class: 'w-full' %>
+  </div>
+  <div class="flex flex-col">
+    <%= f.radio_button :recurrance, "daily", label: "Daily" %>
+    <%= f.radio_button :recurrance, "weekly", label: "Weekly" %>
+    <%= f.radio_button :recurrance, "monthly", label: "Monthly" %>
+    <%= f.radio_button :recurrance, "quarterly", label: "Quarterly" %>
+    <%= f.radio_button :recurrance, "yearly", label: "Yearly" %>
+    <%= f.radio_button :recurrance, "never", label: "Never" %>
+  </div>
+
+  <div class="mdc-dialog__actions">
+    <div class='mdc-touch-target-wrapper' data-material-form-target="button">
+      <button type="button" class="mdc-button mdc-dialog__button" data-mdc-dialog-action="close" >
+        <div class="mdc-button__ripple"></div>
+        <span class="mdc-button__label">Cancel</span>
+      </button>
+    </div>
+    <%= f.button 'save', class: 'mdc-dialog__button', data: { mdc_dialog_action: 'accept' } %>
+  </div>
+<% end %>

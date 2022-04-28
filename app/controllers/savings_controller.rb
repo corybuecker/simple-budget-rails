@@ -13,7 +13,8 @@ class SavingsController < ApplicationController
     saving = user.savings.new(saving_params)
     return render locals: { saving:, user: } if saving.save
 
-    render_flash_error(saving.errors.full_messages.join(', ').strip)
+    render turbo_stream: turbo_stream.replace(:form, partial: 'form', locals: { saving:, user: }),
+           status: :unprocessable_entity
   end
 
   def edit
@@ -24,14 +25,13 @@ class SavingsController < ApplicationController
     saving = fetch_saving
     return render locals: { saving: } if saving.update(saving_params)
 
-    render_flash_error(saving.errors.full_messages.join(', ').strip)
+    render turbo_stream: turbo_stream.replace(:form, partial: 'form', locals: { saving:, user: }),
+           status: :unprocessable_entity
   end
 
   def destroy
-    saving = fetch_saving
-    return render locals: { saving: } if saving.destroy
-
-    render_flash_error(saving.errors.full_messages.join(', ').strip)
+    saving = fetch_saving.destroy
+    render locals: { saving: }
   end
 
   private

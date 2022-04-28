@@ -25,14 +25,14 @@ class AccountsController < ApplicationController
     account = fetch_account
     return render locals: { account: } if account.update(account_params)
 
-    render_flash_error(account.errors.full_messages.join(', ').strip)
+    render turbo_stream: turbo_stream.replace(:form, partial: 'form', locals: { account:, user: }),
+           status: :unprocessable_entity
   end
 
   def destroy
-    account = fetch_account
-    return render locals: { account: } if account.destroy
+    account = fetch_account.destroy
 
-    render_flash_error(account.errors.full_messages.join(', ').strip)
+    render locals: { account: }
   end
 
   private

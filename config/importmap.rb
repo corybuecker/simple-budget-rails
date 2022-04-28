@@ -17,7 +17,6 @@ pin '@material/radio', to: 'https://ga.jspm.io/npm:@material/radio@13.0.0/index.
 pin '@material/ripple', to: 'https://ga.jspm.io/npm:@material/ripple@13.0.0/index.js'
 pin '@material/textfield', to: 'https://ga.jspm.io/npm:@material/textfield@13.0.0/index.js'
 pin '@material/textfield/helper-text', to: 'https://ga.jspm.io/npm:@material/textfield@13.0.0/helper-text/index.js'
-
 pin '@material/animation/animationframe', to: 'https://ga.jspm.io/npm:@material/animation@13.0.0/animationframe.js'
 pin '@material/animation/util', to: 'https://ga.jspm.io/npm:@material/animation@13.0.0/util.js'
 pin '@material/base/component', to: 'https://ga.jspm.io/npm:@material/base@13.0.0/component.js'
@@ -33,4 +32,4 @@ pin '@material/linear-progress/component', to: 'https://ga.jspm.io/npm:@material
 pin '@material/notched-outline/component', to: 'https://ga.jspm.io/npm:@material/notched-outline@13.0.0/component.js'
 pin '@material/ripple/component', to: 'https://ga.jspm.io/npm:@material/ripple@13.0.0/component.js'
 pin '@material/ripple/foundation', to: 'https://ga.jspm.io/npm:@material/ripple@13.0.0/foundation.js'
-pin 'tslib', to: 'https://ga.jspm.io/npm:tslib@2.3.1/tslib.es6.js'
+pin 'tslib', to: 'https://ga.jspm.io/npm:tslib@2.4.0/tslib.es6.js'
