@@ -19,8 +19,7 @@ export default class extends Controller {
   }
 
   textfieldTargetConnected(element) {
-    const field = new MDCTextField(element)
-    // field.setAutovalidate(false)
+    new MDCTextField(element)
   }
 
   buttonTargetConnected(element) {
@@ -28,8 +27,8 @@ export default class extends Controller {
   }
 
   checkboxTargetConnected(element) {
-    // const formField = new MDCFormField(element)
-    // const radio = new MDCRadio(element.querySelector('.mdc-checkbox'))
-    // formField.input = radio
+    const formField = new MDCFormField(element)
+    const radio = new MDCRadio(element.querySelector('.mdc-checkbox'))
+    formField.input = radio
   }
 }

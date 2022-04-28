@@ -13,7 +13,8 @@ class GoalsController < ApplicationController
     goal = user.goals.new(goal_params)
     return render locals: { goal:, user: } if goal.save
 
-    render_flash_error(goal.errors.full_messages.join(', ').strip)
+    render turbo_stream: turbo_stream.replace(:form, partial: 'form', locals: { goal:, user: }),
+           status: :unprocessable_entity
   end
 
   def edit
@@ -24,14 +25,13 @@ class GoalsController < ApplicationController
     goal = fetch_goal
     return render locals: { goal: } if goal.update(goal_params)
 
-    render_flash_error(goal.errors.full_messages.join(', ').strip)
+    render turbo_stream: turbo_stream.replace(:form, partial: 'form', locals: { goal:, user: }),
+           status: :unprocessable_entity
   end
 
   def destroy
-    goal = fetch_goal
-    return render locals: { goal: } if goal.destroy
-
-    render_flash_error(goal.errors.full_messages.join(', ').strip)
+    goal = fetch_goal.destroy
+    render locals: { goal: }
   end
 
   private

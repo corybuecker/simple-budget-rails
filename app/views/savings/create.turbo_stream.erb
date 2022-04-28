@@ -1,1 +1,2 @@
 <%= turbo_stream.append :savings, partial: 'saving', locals: { saving:, user: } %>
+<%= turbo_stream.remove :modal %>

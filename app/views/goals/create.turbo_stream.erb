@@ -1,1 +1,2 @@
 <%= turbo_stream.append :goals, partial: 'goal', locals: { goal:, user: } %>
+<%= turbo_stream.remove :modal %>
