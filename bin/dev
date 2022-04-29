@@ -6,4 +6,8 @@ then
   exit 1
 fi
 
+echo "\n== Starting docker =="
+
+docker-compose up -d
+
 overmind start -f Procfile.dev
