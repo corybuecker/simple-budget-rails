@@ -1,6 +1,18 @@
 # frozen_string_literal: true
 
 module MaterialTagsHelper
+  def material_link_to(text, path, data: {})
+    tag.div(class: 'mdc-touch-target-wrapper') do
+      tag.a(href: path, class: 'mdc-button mdc-button--raised mdc-button--touch', data:) do
+        tag.span(class: 'mdc-button__ripple') +
+          tag.span(class: 'mdc-button__touch') +
+          tag.span(class: 'mdc-button__label') do
+            text
+          end
+      end
+    end
+  end
+
   def material_button_tag(text, controllers: [], actions: [])
     controllers = (controllers + ['material-tags']).uniq.join(' ')
 
