@@ -24,6 +24,9 @@
         <span class="mdc-button__label">Cancel</span>
       </button>
     </div>
-    <%= f.button 'save', class: 'mdc-dialog__button', data: { mdc_dialog_action: 'accept' } %>
+    <button formnovalidate type="submit" class="mdc-button mdc-dialog__button">
+      <div class="mdc-button__ripple"></div>
+      <span class="mdc-button__label">Save</span>
+    </button>
   </div>
 <% end %>
