@@ -17,8 +17,11 @@
 
   <body>
     <%= render 'shared/flash' %>
-    <div class="flex divide-x">
-      <nav class="pt-[8px] h-screen">
+    <div class="grid md:flex h-screen md:h-full">
+      <main class="px-8 pt-8">
+        <%= yield %>
+      </main>
+      <nav class="self-end md:self-auto">
         <div class="grid grid-cols-1">
           <%= link_to dashboard_show_path, class: "w-[72px] h-[72px] pt-[14px] pb-[16px] hover:text-indigo-500 text-center" do %>
             <span class="block material-icons">dashboard</span>
@@ -38,9 +41,7 @@
           <% end %>
         </div>
       </nav>
-      <main class="px-8 pt-8">
-        <%= yield %>
-      </main>
+
     </div>
   </body>
 </html>
