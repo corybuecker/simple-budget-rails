@@ -17,31 +17,28 @@
 
   <body>
     <%= render 'shared/flash' %>
-    <div class="grid md:flex h-screen md:h-full">
+    <div class="flex flex-col-reverse md:flex-row">
+      <nav class="flex md:block">
+        <%= link_to dashboard_show_path, class: "w-[72px] h-[72px] pt-[14px] pb-[16px] hover:text-indigo-500 text-center" do %>
+          <span class="block material-icons">dashboard</span>
+          <div class="text-sm leading-none">Reports</div>
+        <% end %>
+        <%= link_to accounts_path, class: "w-[72px] h-[72px] pt-[14px] pb-[16px] hover:text-indigo-500 text-center" do %>
+          <span class="block material-icons">account_balance</span>
+          <div class="text-sm leading-none">Accounts</div>
+        <% end %>
+        <%= link_to savings_path, class: "w-[72px] h-[72px] pt-[14px] pb-[16px] hover:text-indigo-500 text-center" do %>
+          <span class="block material-icons">savings</span>
+          <div class="text-sm leading-none">Savings</div>
+        <% end %>
+        <%= link_to goals_path, class: "w-[72px] h-[72px] pt-[14px] pb-[16px] hover:text-indigo-500 text-center" do %>
+          <span class="block material-icons">sports_score</span>
+          <div class="text-sm leading-none">Goals</div>
+        <% end %>
+      </nav>
       <main class="px-8 pt-8">
         <%= yield %>
       </main>
-      <nav class="self-end md:self-auto">
-        <div class="grid grid-cols-1">
-          <%= link_to dashboard_show_path, class: "w-[72px] h-[72px] pt-[14px] pb-[16px] hover:text-indigo-500 text-center" do %>
-            <span class="block material-icons">dashboard</span>
-            <div class="text-sm leading-none">Reports</div>
-          <% end %>
-          <%= link_to accounts_path, class: "w-[72px] h-[72px] pt-[14px] pb-[16px] hover:text-indigo-500 text-center" do %>
-            <span class="block material-icons">account_balance</span>
-            <div class="text-sm leading-none">Accounts</div>
-          <% end %>
-          <%= link_to savings_path, class: "w-[72px] h-[72px] pt-[14px] pb-[16px] hover:text-indigo-500 text-center" do %>
-            <span class="block material-icons">savings</span>
-            <div class="text-sm leading-none">Savings</div>
-          <% end %>
-          <%= link_to goals_path, class: "w-[72px] h-[72px] pt-[14px] pb-[16px] hover:text-indigo-500 text-center" do %>
-            <span class="block material-icons">sports_score</span>
-            <div class="text-sm leading-none">Goals</div>
-          <% end %>
-        </div>
-      </nav>
-
     </div>
   </body>
 </html>
