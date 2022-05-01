@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class MaterialFormBuilder < ActionView::Helpers::FormBuilder
-  delegate :content_tag, :tag, :button_tag, to: :template
+  include Select
+  delegate :content_tag, :tag, :button_tag, :concat, to: :template
 
   # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/MethodLength

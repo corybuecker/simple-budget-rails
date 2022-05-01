@@ -31,7 +31,6 @@ class Goal < ApplicationRecord
     target_date - goal_length
   end
 
-  # rubocop:disable Metrics/MethodLength
   def goal_length
     case recurrance
     when 'daily'
@@ -46,5 +45,4 @@ class Goal < ApplicationRecord
       1.year
     end
   end
-  # rubocop:enable Metrics/MethodLength
 end
