@@ -75,6 +75,6 @@ end
 
 gem 'rubocop-rails', '~> 2.14', require: false
 
-gem 'sidekiq', '~> 6.4'
+gem 'sidekiq', '~> 6.5'
 
 gem 'jwt', '~> 2.4'
