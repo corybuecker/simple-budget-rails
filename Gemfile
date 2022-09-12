@@ -73,7 +73,7 @@ group :test do
   gem 'webdrivers'
 end
 
-gem 'rubocop-rails', '~> 2.15', require: false
+gem 'rubocop-rails', '~> 2.16', require: false
 
 gem 'sidekiq', '~> 6.5'
 
