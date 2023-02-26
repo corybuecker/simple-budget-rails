@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   get 'login/new'
   get 'dashboard', to: 'dashboard#show'
 
-  root 'dashboard#index'
+  resources :accounts
+
+  root 'dashboard#show'
 end
