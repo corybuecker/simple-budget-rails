@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateGoals < ActiveRecord::Migration[7.0]
   # rubocop:disable Metrics/MethodLength
   def up
