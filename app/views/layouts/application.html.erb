@@ -13,7 +13,15 @@
 
   <body>
     <main class="">
-      <%= yield %>
+      <nav>
+        <%= link_to "Dashboard", dashboard_path %>
+        <%= link_to "Accounts", accounts_path %>
+        <%= link_to "Savings", savings_path %>
+        <%= link_to "Goals", goals_path %>
+      </nav>
+      <div id="content">
+        <%= yield %>
+      </div>
     </main>
   </body>
 </html>
