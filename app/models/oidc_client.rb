@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class OidcClient
-  ISSUER = 'https://accounts.google.com'
+  ISSUER = "https://accounts.google.com"
 
   def initialize
     self.config = OpenIDConnect::Discovery::Provider::Config.discover!(ISSUER)
@@ -27,8 +27,8 @@ class OidcClient
 
   def client_options
     {
-      identifier: ENV.fetch('OIDC_CLIENT_ID'),
-      secret: ENV.fetch('OIDC_CLIENT_SECRET'),
+      identifier: ENV.fetch("OIDC_CLIENT_ID"),
+      secret: ENV.fetch("OIDC_CLIENT_SECRET"),
       authorization_endpoint: config.authorization_endpoint,
       token_endpoint: config.token_endpoint,
       userinfo_endpoint: config.userinfo_endpoint

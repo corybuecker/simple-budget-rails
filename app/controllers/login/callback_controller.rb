@@ -10,18 +10,23 @@ module Login
     before_action :require_user_existance
 
     def new
-      session['email'] = identity.email
+      session["email"] = identity.email
       redirect_to dashboard_path
     end
 
     private
 
     def validate_state
-      render status: :unauthorized unless session.delete(:state) == params[:state]
+      return if session.delete(:state) == params[:state]
+      render status: :unauthorized
     end
 
     def identity
-      @identity ||= OidcClient.new.userinfo!(redirect_uri: login_callback_new_url, code: params['code'])
+      @identity ||=
+        OidcClient.new.userinfo!(
+          redirect_uri: login_callback_new_url,
+          code: params["code"]
+        )
     end
 
     def require_email_verified

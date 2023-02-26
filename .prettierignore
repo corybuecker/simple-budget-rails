@@ -1,0 +1,14 @@
+/tmp
+/log
+Gemfile.lock
+.keep
+.editorconfig
+*.enc
+/public
+*.erb
+.env
+.gitignore
+.gitattributes
+.prettierignore
+*.key
+.ruby-version

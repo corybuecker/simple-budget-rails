@@ -2,12 +2,12 @@
 
 Rails.application.routes.draw do
   namespace :login do
-    get 'callback/new'
+    get "callback/new"
   end
-  get 'login/new'
-  get 'dashboard', to: 'dashboard#show'
+  get "login/new"
+  get "dashboard", to: "dashboard#show"
 
   resources :accounts
 
-  root 'dashboard#show'
+  root "dashboard#show"
 end
