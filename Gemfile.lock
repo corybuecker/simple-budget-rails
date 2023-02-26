@@ -160,7 +160,12 @@ GEM
     parallel (1.22.1)
     parser (3.2.1.0)
       ast (~> 2.4.1)
-    pg (1.4.5)
+    pg (1.4.6)
+    propshaft (0.6.4)
+      actionpack (>= 7.0.0)
+      activesupport (>= 7.0.0)
+      rack
+      railties (>= 7.0.0)
     public_suffix (5.0.1)
     puma (6.1.0)
       nio4r (~> 2.0)
@@ -230,14 +235,6 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    sprockets (4.2.0)
-      concurrent-ruby (~> 1.0)
-      rack (>= 2.2.4, < 4)
-    sprockets-rails (3.4.2)
-      actionpack (>= 5.2)
-      activesupport (>= 5.2)
-      sprockets (>= 3.0.0)
-    sqlite3 (1.6.1-arm64-darwin)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
     swd (2.0.2)
@@ -294,14 +291,13 @@ DEPENDENCIES
   jbuilder
   openid_connect
   pg
+  propshaft
   puma (~> 6.0)
   rails (~> 7.0.4, >= 7.0.4.2)
   rubocop-rails
   selenium-webdriver
-  sprockets-rails
-  sqlite3 (~> 1.4)
   stimulus-rails
-  tailwindcss-rails (~> 2.0)
+  tailwindcss-rails
   turbo-rails
   tzinfo-data
   web-console
