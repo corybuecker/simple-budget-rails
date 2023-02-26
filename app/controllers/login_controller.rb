@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class LoginController < ApplicationController
-  skip_before_action :ensure_authenticated
+  skip_before_action :redirect_unauthenticated
 
   def new
     redirect_to OidcClient.new.authorization_uri(redirect_uri: login_callback_new_url, state:), allow_other_host: true

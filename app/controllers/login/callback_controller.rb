@@ -2,7 +2,7 @@
 
 module Login
   class CallbackController < ApplicationController
-    skip_before_action :ensure_authenticated
+    skip_before_action :redirect_unauthenticated
 
     before_action :validate_state
     before_action :reset_session
@@ -11,12 +11,14 @@ module Login
 
     def new
       session['email'] = identity.email
-      redirect_to dashboard_index_path
+      redirect_to dashboard_path
     end
 
     private
 
-    def validate_state; end
+    def validate_state
+      render status: :unauthorized unless session.delete(:state) == params[:state]
+    end
 
     def identity
       @identity ||= OidcClient.new.userinfo!(redirect_uri: login_callback_new_url, code: params['code'])
@@ -27,7 +29,7 @@ module Login
     end
 
     def require_user_existance
-      render status: :unauthorized unless User.where(email: identity.email).exists?
+      render status: :unauthorized unless User.exists?(email: identity.email)
     end
   end
 end

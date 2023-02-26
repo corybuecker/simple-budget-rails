@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get 'callback/new'
   end
   get 'login/new'
-  get 'dashboard/index'
+  get 'dashboard', to: 'dashboard#show'
 
   root 'dashboard#index'
 end
