@@ -20,16 +20,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_160211) do
   create_enum "goals_recurrances", ["never", "daily", "weekly", "monthly", "quarterly", "yearly"]
 
   create_table "accounts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "user_id", null: false
     t.string "name", null: false
     t.decimal "balance", null: false
     t.boolean "debt", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.uuid "user_id"
+    t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
   create_table "goals", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "user_id", null: false
     t.string "name", null: false
     t.decimal "amount", null: false
     t.enum "recurrance", default: "monthly", null: false, enum_type: "goals_recurrances"
@@ -37,14 +37,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_160211) do
     t.date "start_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.uuid "user_id"
+    t.index ["user_id"], name: "index_goals_on_user_id"
   end
 
   create_table "savings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "user_id", null: false
     t.string "name", null: false
     t.decimal "amount", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.uuid "user_id"
+    t.index ["user_id"], name: "index_savings_on_user_id"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -55,4 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_160211) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "accounts", "users"
+  add_foreign_key "goals", "users"
+  add_foreign_key "savings", "users"
 end
