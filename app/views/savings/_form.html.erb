@@ -1,0 +1,21 @@
+<%= form_with model: saving, id: dom_id(saving)  do |f| %>
+    <% if saving.errors.any? %>
+        <ul>
+        <% saving.errors.full_messages.each do |message|%>
+            <li><%= message %> </li>
+        <%end%>
+        </ul>
+    <%end%>
+    
+    <div>
+        <%= f.label :name, "Name" %>
+        <%= f.text_field :name %>
+    </div>
+    
+    <div>
+        <%= f.label :amount, "Amount" %>
+        <%= f.number_field :amount, step: 0.01 %>
+    </div>
+
+    <%= f.submit %>
+<% end %>
