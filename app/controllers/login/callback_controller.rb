@@ -10,7 +10,7 @@ module Login
     before_action :require_user_existance
 
     def new
-      session["email"] = identity.email
+      session['email'] = identity.email
       redirect_to dashboard_path
     end
 
@@ -18,6 +18,7 @@ module Login
 
     def validate_state
       return if session.delete(:state) == params[:state]
+
       render status: :unauthorized
     end
 
@@ -25,7 +26,7 @@ module Login
       @identity ||=
         OidcClient.new.userinfo!(
           redirect_uri: login_callback_new_url,
-          code: params["code"]
+          code: params['code']
         )
     end
 

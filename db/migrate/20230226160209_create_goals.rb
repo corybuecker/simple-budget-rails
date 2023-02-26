@@ -3,7 +3,7 @@
 class CreateGoals < ActiveRecord::Migration[7.0]
   # rubocop:disable Metrics/MethodLength
   def up
-    enable_extension "pgcrypto" unless extension_enabled?("pgcrypto")
+    enable_extension 'pgcrypto' unless extension_enabled?('pgcrypto')
 
     create_enum :goals_recurrances,
                 %w[never daily weekly monthly quarterly yearly]
@@ -28,6 +28,6 @@ class CreateGoals < ActiveRecord::Migration[7.0]
   def down
     drop_table :goals
 
-    execute "drop type goals_recurrances"
+    execute 'drop type goals_recurrances'
   end
 end
