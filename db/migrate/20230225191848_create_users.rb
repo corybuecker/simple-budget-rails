@@ -6,6 +6,7 @@ class CreateUsers < ActiveRecord::Migration[7.0]
 
     create_table :users, id: :uuid do |t|
       t.string :email, null: false
+      t.jsonb :preferences, null: false, default: {}
       t.timestamps
 
       t.index :email, unique: true
