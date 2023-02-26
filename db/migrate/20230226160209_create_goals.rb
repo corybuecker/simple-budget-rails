@@ -1,4 +1,5 @@
 class CreateGoals < ActiveRecord::Migration[7.0]
+  # rubocop:disable Metrics/MethodLength
   def up
     enable_extension 'pgcrypto' unless extension_enabled?('pgcrypto')
 
@@ -16,6 +17,7 @@ class CreateGoals < ActiveRecord::Migration[7.0]
       t.timestamps
     end
   end
+  # rubocop:enable Metrics/MethodLength
 
   def down
     drop_table :goals
