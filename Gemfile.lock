@@ -292,8 +292,8 @@ DEPENDENCIES
   openid_connect
   pg
   propshaft
-  puma (~> 6.0)
-  rails (~> 7.0.4, >= 7.0.4.2)
+  puma
+  rails
   rubocop-rails
   selenium-webdriver
   stimulus-rails
