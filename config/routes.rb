@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   resources :accounts
   resources :goals
   resources :savings
+  namespace :user do
+    resource :preferences, only: [:update]
+  end
 
   root 'dashboard#show'
 end

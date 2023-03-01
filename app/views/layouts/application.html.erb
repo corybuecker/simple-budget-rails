@@ -13,11 +13,16 @@
 
   <body>
     <nav class="bg-slate-800">
-      <div class="flex h-14 items-center space-x-4 px-4">
-        <%= navigation_link_to "Dashboard", dashboard_path %>
-        <%= navigation_link_to "Accounts", accounts_path %>
-        <%= navigation_link_to "Savings", savings_path %>
-        <%= navigation_link_to "Goals", goals_path %>
+      <div class="flex justify-between">
+        <div class="flex h-14 items-center space-x-4 px-4">
+          <%= navigation_link_to "Dashboard", dashboard_path %>
+          <%= navigation_link_to "Accounts", accounts_path %>
+          <%= navigation_link_to "Savings", savings_path %>
+          <%= navigation_link_to "Goals", goals_path %>
+        </div>
+        <div class="flex h-14 items-center space-x-4 px-4">
+          <%= render partial: 'users/preferences/layout', locals: { current_user: @current_user } %>
+        </div>
       </div>
     </nav>
 

@@ -2,7 +2,7 @@
 
 class AccountsController < ApplicationController
   def index
-    render locals: { accounts: current_user.accounts }
+    render locals: { accounts: current_user.accounts, current_user: }
   end
 
   def new
