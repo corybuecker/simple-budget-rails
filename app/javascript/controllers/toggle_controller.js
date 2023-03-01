@@ -4,6 +4,6 @@ export default class extends Controller {
   static targets = ["form"];
 
   save(options) {
-    this.element.submit();
+    this.element.requestSubmit();
   }
 }

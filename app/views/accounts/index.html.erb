@@ -1,2 +1,15 @@
+<%= content_for :preferences_layout do %>
+  <%= render partial: 'user/preferences/layout', locals: { current_user:, collection: :accounts } %>
+<% end %>
+
 <%= link_to "New", new_account_path %>
 
+<div id="<%= dom_id(current_user, :accounts) %>">
+  <% if current_user.preferences.layout == "automatic" %>
+    <%= render partial: 'automatic', locals: { accounts: } %>
+  <% elsif current_user.preferences.layout == "grid" %>
+    <%= render partial: 'grid', locals: { accounts: } %>
+  <% else %>
+    <%= render partial: 'list', locals: { accounts: } %>
+  <% end %>
+</div>

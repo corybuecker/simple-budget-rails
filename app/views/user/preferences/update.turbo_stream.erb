@@ -1,0 +1,9 @@
+<% if collection == "accounts" %>
+  <% if current_user.preferences.layout == "automatic" %>
+    <%= turbo_stream.update dom_id(current_user, :accounts), partial: 'accounts/automatic', locals: { accounts: current_user.accounts } %>
+  <% elsif current_user.preferences.layout == "grid" %>
+    <%= turbo_stream.update dom_id(current_user, :accounts), partial: 'accounts/grid', locals: { accounts: current_user.accounts } %>
+  <% else %>
+    <%= turbo_stream.update dom_id(current_user, :accounts), partial: 'accounts/list', locals: { accounts: current_user.accounts } %>
+  <% end %>
+<% end %>
