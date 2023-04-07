@@ -17,13 +17,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_160211) do
 
   # Custom types defined in this database.
   # Note that some types may not work with other database engines. Be careful if changing database.
-  create_enum "goals_recurrances",
-              %w[never daily weekly monthly quarterly yearly]
+  create_enum "goals_recurrances", ["never", "daily", "weekly", "monthly", "quarterly", "yearly"]
 
-  create_table "accounts",
-               id: :uuid,
-               default: -> { "gen_random_uuid()" },
-               force: :cascade do |t|
+  create_table "accounts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.decimal "balance", null: false
     t.boolean "debt", default: false, null: false
@@ -33,16 +29,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_160211) do
     t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
-  create_table "goals",
-               id: :uuid,
-               default: -> { "gen_random_uuid()" },
-               force: :cascade do |t|
+  create_table "goals", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.decimal "amount", null: false
-    t.enum "recurrance",
-           default: "monthly",
-           null: false,
-           enum_type: "goals_recurrances"
+    t.enum "recurrance", default: "monthly", null: false, enum_type: "goals_recurrances"
     t.date "target_date", null: false
     t.date "start_date"
     t.datetime "created_at", null: false
@@ -51,10 +41,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_160211) do
     t.index ["user_id"], name: "index_goals_on_user_id"
   end
 
-  create_table "savings",
-               id: :uuid,
-               default: -> { "gen_random_uuid()" },
-               force: :cascade do |t|
+  create_table "savings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.decimal "amount", null: false
     t.datetime "created_at", null: false
@@ -63,10 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_160211) do
     t.index ["user_id"], name: "index_savings_on_user_id"
   end
 
-  create_table "users",
-               id: :uuid,
-               default: -> { "gen_random_uuid()" },
-               force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email", null: false
     t.jsonb "preferences", default: {}, null: false
     t.datetime "created_at", null: false
