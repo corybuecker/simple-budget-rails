@@ -1,24 +1,19 @@
-# README
+# Simple Budget
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Simple Budget is a web-based version of the budgeting spreadsheet I have used for 15 years. It's loosely based on envelope-saving.
 
-Things you may want to cover:
+This particular application is the Ruby on Rails reference version of the Phoenix application. I find it quite useful to build a semi-complex application (more complex than TodoMVC) in any language and framework I am learning. In this case, I use it as a testbed to maintain Hotwire-related skills and experience.
 
-- Ruby version
+## Running Simple Budget
 
-- System dependencies
+Assuming you have a running PostgreSQL database...
 
-- Configuration
+    bundle
+    ./bin/rails db:reset db:seed
+    DEMO_MODE=true ./bin/rails server
 
-- Database creation
+## What is Simple Budget
 
-- Database initialization
+In a picture...
 
-- How to run the test suite
-
-- Services (job queues, cache servers, search engines, etc.)
-
-- Deployment instructions
-
-- ...
+![goals to saving](/docs/goals_to_savings_gu1aiCah6hu6.png)
