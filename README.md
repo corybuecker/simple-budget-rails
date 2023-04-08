@@ -10,7 +10,7 @@ Assuming you have a running PostgreSQL database...
 
     bundle
     ./bin/rails db:reset db:seed
-    DEMO_MODE=true ./bin/rails server
+    DEMO_MODE=true ./bin/dev
 
 ## What is Simple Budget
 
