@@ -1,9 +1,21 @@
 <% if collection == "accounts" %>
-  <% if current_user.preferences.layout == "automatic" %>
-    <%= turbo_stream.update dom_id(current_user, :accounts), partial: 'accounts/automatic', locals: { accounts: current_user.accounts } %>
-  <% elsif current_user.preferences.layout == "grid" %>
+  <% if current_user.preferences.layout == "grid" %>
     <%= turbo_stream.update dom_id(current_user, :accounts), partial: 'accounts/grid', locals: { accounts: current_user.accounts } %>
   <% else %>
     <%= turbo_stream.update dom_id(current_user, :accounts), partial: 'accounts/list', locals: { accounts: current_user.accounts } %>
+  <% end %>
+<% end %>
+<% if collection == "savings" %>
+  <% if current_user.preferences.layout == "grid" %>
+    <%= turbo_stream.update dom_id(current_user, :savings), partial: 'savings/grid', locals: { savings: current_user.savings } %>
+  <% else %>
+    <%= turbo_stream.update dom_id(current_user, :savings), partial: 'savings/list', locals: { savings: current_user.savings } %>
+  <% end %>
+<% end %>
+<% if collection == "goals" %>
+  <% if current_user.preferences.layout == "grid" %>
+    <%= turbo_stream.update dom_id(current_user, :goals), partial: 'goals/grid', locals: { goals: current_user.goals } %>
+  <% else %>
+    <%= turbo_stream.update dom_id(current_user, :goals), partial: 'goals/list', locals: { goals: current_user.goals } %>
   <% end %>
 <% end %>

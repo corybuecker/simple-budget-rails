@@ -1,2 +1,15 @@
-<md-filled-button label="New goal"></md-filled-button>
-<%= goals.inspect %>
+<%= content_for :preferences_layout do %>
+  <%= render partial: 'user/preferences/layout', locals: { current_user:, collection: :goals } %>
+<% end %>
+<div class="flex flex-col">
+  <%= link_to new_goal_path do %>
+    <md-filled-button label="New goal"></md-filled-button>
+  <% end %>
+  <div id="<%= dom_id(current_user, :goals) %>">
+    <% if current_user.preferences.layout == "grid" %>
+      <%= render partial: 'grid', locals: { goals: } %>
+    <% else %>
+      <%= render partial: 'list', locals: { goals: } %>
+    <% end %>
+  </div>
+</div>

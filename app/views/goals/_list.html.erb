@@ -1,0 +1,9 @@
+<ul>
+  <% goals.each do |goal| %>
+    <li>
+      <%= goal.name %> &mdash; <%= number_to_currency(goal.amount) %><br />
+      <%= link_to "Edit", edit_goal_path(goal) %>
+      <%= link_to "Delete", goal_path(goal), data: { turbo_method: :delete } %>
+    </li>
+  <% end %>
+</ul>

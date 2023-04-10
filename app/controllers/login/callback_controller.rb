@@ -11,7 +11,7 @@ module Login
 
     def new
       session['email'] = identity.email
-      redirect_to dashboard_path
+      redirect_to reports_path
     end
 
     private

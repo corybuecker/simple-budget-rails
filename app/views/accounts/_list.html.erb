@@ -1,2 +1,9 @@
-list
-<%= accounts.to_a %>
+<ul>
+  <% accounts.each do |account| %>
+    <li>
+      <%= account.name %> &mdash; <%= number_to_currency(account.balance) %><br />
+      <%= link_to "Edit", edit_account_path(account) %>
+      <%= link_to "Delete", account_path(account), data: { turbo_method: :delete } %>
+    </li>
+  <% end %>
+</ul>

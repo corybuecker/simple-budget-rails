@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_26_160211) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_10_213644) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -25,7 +25,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_160211) do
     t.boolean "debt", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.uuid "user_id"
+    t.uuid "user_id", null: false
     t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
@@ -37,7 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_160211) do
     t.date "start_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.uuid "user_id"
+    t.uuid "user_id", null: false
     t.index ["user_id"], name: "index_goals_on_user_id"
   end
 
@@ -46,8 +46,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_160211) do
     t.decimal "amount", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.uuid "user_id"
+    t.uuid "user_id", null: false
     t.index ["user_id"], name: "index_savings_on_user_id"
+  end
+
+  create_table "transactions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.decimal "amount", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "user_id", null: false
+    t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -61,4 +69,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_26_160211) do
   add_foreign_key "accounts", "users"
   add_foreign_key "goals", "users"
   add_foreign_key "savings", "users"
+  add_foreign_key "transactions", "users"
 end

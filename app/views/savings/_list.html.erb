@@ -1,0 +1,9 @@
+<ul>
+  <% savings.each do |saving| %>
+    <li>
+      <%= saving.name %> &mdash; <%= number_to_currency(saving.amount) %><br />
+      <%= link_to "Edit", edit_saving_path(saving) %>
+      <%= link_to "Delete", saving_path(saving), data: { turbo_method: :delete } %>
+    </li>
+  <% end %>
+</ul>

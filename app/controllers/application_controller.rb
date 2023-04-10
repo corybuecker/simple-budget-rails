@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= User.find_by(email: ENV.fetch('DEMO_MODE') ? 'test@example.com' : session['email'])
+    @current_user ||= User.find_by(email: ENV.fetch('DEMO_MODE') == '1' ? 'test@example.com' : session['email'])
+  end
+
+  def locals_with_current_user(extras)
+    { locals: { current_user: }.merge(extras) }
   end
 end

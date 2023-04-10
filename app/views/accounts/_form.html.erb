@@ -14,5 +14,7 @@
     <%= f.label :balance, "Balance" %>
     <%= f.number_field :balance, step: 0.01 %>
   </div>
-  <%= f.submit "Save" %>
+  <%= f.button type: "submit" do %>
+    <md-filled-button label="Save"></md-filled-button>
+  <% end %>
 <% end %>
