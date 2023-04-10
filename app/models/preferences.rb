@@ -4,6 +4,6 @@ class Preferences
   include ActiveModel::Model
   include ActiveModel::Attributes
 
-  attribute :layout, :string, default: -> { 'automatic' }
-  validates :layout, presence: true, inclusion: { in: %w[automatic grid list] }
+  attribute :layout, :string, default: -> { 'list' }
+  validates :layout, presence: true, inclusion: { in: %w[grid list] }
 end

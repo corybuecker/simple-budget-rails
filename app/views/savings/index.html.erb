@@ -1,2 +1,15 @@
-<%= link_to "New", new_saving_path %>
-<%= savings.inspect %>
+<%= content_for :preferences_layout do %>
+  <%= render partial: 'user/preferences/layout', locals: { current_user:, collection: :savings } %>
+<% end %>
+<div class="flex flex-col">
+  <%= link_to new_saving_path do %>
+    <md-filled-button label="New saving"></md-filled-button>
+  <% end %>
+  <div id="<%= dom_id(current_user, :savings) %>">
+    <% if current_user.preferences.layout == "grid" %>
+      <%= render partial: 'grid', locals: { savings: } %>
+    <% else %>
+      <%= render partial: 'list', locals: { savings: } %>
+    <% end %>
+  </div>
+</div>

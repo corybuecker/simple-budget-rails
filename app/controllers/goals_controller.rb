@@ -2,31 +2,42 @@
 
 class GoalsController < ApplicationController
   def index
-    render locals: { goals: current_user.goals }
+    render locals_with_current_user({ goals: current_user.goals })
   end
 
   def new
-    render locals: { goal: current_user.goals.build, current_user: }
+    render locals_with_current_user({ goal: current_user.goals.build })
   end
 
   def edit
-    render locals: { goal: current_user.goals.find(params[:id]), current_user: }
+    render locals_with_current_user({ goal: current_user.goals.find(params[:id]) })
   end
 
   def create
-    goal = current_user.goals.build(params.require(:goal).permit(:name, :amount, :recurrance, :target_date))
+    goal = current_user.goals.build(permitted_params)
 
     return redirect_to goals_path if goal.save
 
-    render locals: { goal:, current_user: }
+    render locals_with_current_user({ goal: })
   end
 
   def update
     goal = current_user.goals.find(params[:id])
 
-    return redirect_to goals_path if goal.update(params.require(:goal).permit(:name, :amount, :recurrance,
-                                                                              :target_date, :start_date))
+    return redirect_to goals_path, notice: t('saved') if goal.update(permitted_params)
 
-    render locals: { goal:, current_user: }
+    render locals_with_current_user({ goal: })
+  end
+
+  def destroy
+    goal = current_user.goals.find(params[:id])
+
+    return redirect_to goals_path if goal.destroy
+  end
+
+  private
+
+  def permitted_params
+    params.require(:goal).permit(:name, :amount, :recurrance, :target_date, :start_date)
   end
 end

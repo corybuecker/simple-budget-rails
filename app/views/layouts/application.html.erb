@@ -3,7 +3,7 @@
   <head>
     <title>Simple Budget</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="manifest" href="<%= url_for("site.webmanifest") %>">
+    <link rel="manifest" href="<%= url_for("/site.webmanifest") %>">
     <%= favicon_link_tag "apple-touch-icon.png", rel: "apple-touch-icon", sizes: "180x180" %>
     <%= favicon_link_tag "favicon-32x32.png", rel: "icon", sizes: "32x32", type: "image/png" %>
     <%= favicon_link_tag "favicon-16x16.png", rel: "icon", sizes: "16x16", type: "image/png" %>
@@ -30,7 +30,14 @@
         </div>
       </div>
     </nav>
-    <main class="">
+    <main class="flex px-4 pt-4">
+      <div class="relative">
+        <% flash.each do |flash_type, message| %>
+          <div class="fixed right-4 bg-slate-300 p-4 z-10" data-controller="flash" data-flash-target="message">
+            <%= message %>
+          </div>
+        <% end %>
+      </div>
       <%= yield %>
     </main>
   </body>

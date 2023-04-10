@@ -6,7 +6,7 @@ class UserTest < ActiveSupport::TestCase
   test 'saves with default preferences' do
     user = User.new(email: 'test@example.com')
     assert(user.save)
-    assert(user.reload.preferences.layout == 'automatic')
+    assert(user.reload.preferences.layout == 'list')
   end
 
   test 'validates preferences' do
