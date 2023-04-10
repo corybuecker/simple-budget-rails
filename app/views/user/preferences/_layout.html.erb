@@ -1,5 +1,4 @@
 <%# locals: (current_user:, collection:) -%>
-
 <div class="text-white">
   <%= form_with model: current_user.preferences, id: dom_id(current_user, :preferences_layout), url: user_preferences_path, method: :patch, class: 'flex gap-4', data: { controller: :toggle } do |f| %>
     <%= f.hidden_field :collection, value: collection %>

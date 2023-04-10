@@ -1,31 +1,26 @@
 <%= form_with model: goal, id: dom_id(goal)  do |f| %>
-    <% if goal.errors.any? %>
-        <ul>
-        <% goal.errors.full_messages.each do |message|%>
-            <li><%= message %> </li>
-        <%end%>
-        </ul>
-    <%end%>
-    
-    <div>
-        <%= f.label :name, "Name" %>
-        <%= f.text_field :name %>
-    </div>
-    
-    <div>
-        <%= f.label :amount, "Amount" %>
-        <%= f.number_field :amount, step: 0.01 %>
-    </div>
-    
-    <div>
-        <%= f.label :recurrance, "Recurrance" %>
-        <%= f.select :recurrance, %w[never daily weekly monthly quarterly yearly] %>
-    </div>
-    
-    <div>
-        <%= f.label :target_date, "Target date" %>
-        <%= f.date_field :target_date %>
-    </div>
-
-    <%= f.submit %>
+  <% if goal.errors.any? %>
+    <ul>
+      <% goal.errors.full_messages.each do |message|%>
+        <li><%= message %> </li>
+      <%end%>
+    </ul>
+  <%end%>
+  <div>
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name %>
+  </div>
+  <div>
+    <%= f.label :amount, "Amount" %>
+    <%= f.number_field :amount, step: 0.01 %>
+  </div>
+  <div>
+    <%= f.label :recurrance, "Recurrance" %>
+    <%= f.select :recurrance, %w[never daily weekly monthly quarterly yearly] %>
+  </div>
+  <div>
+    <%= f.label :target_date, "Target date" %>
+    <%= f.date_field :target_date %>
+  </div>
+  <%= f.submit %>
 <% end %>

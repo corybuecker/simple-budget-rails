@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
   get 'login/new'
 
-  get 'dashboard', to: 'dashboard#show'
+  get 'reports', to: 'reports#show'
 
   resources :accounts
   resources :goals
@@ -15,5 +15,5 @@ Rails.application.routes.draw do
     resource :preferences, only: [:update]
   end
 
-  root 'dashboard#show'
+  root 'reports#show'
 end

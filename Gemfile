@@ -69,6 +69,9 @@ group :development do
   # gem "spring"
 
   gem 'rubocop-rails', require: false
+
+  # Completely optional, but allows ERB formatting inside VSCode
+  gem 'htmlbeautifier'
 end
 
 group :test do
