@@ -68,8 +68,8 @@ group :development do
   gem 'rubocop-rails', require: false
 
   # Completely optional, but allows ERB formatting inside VSCode
-  gem 'htmlbeautifier'
   gem 'dockerfile-rails'
+  gem 'htmlbeautifier'
 end
 
 gem 'openid_connect'
