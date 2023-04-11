@@ -69,7 +69,6 @@ group :development do
 
   # Completely optional, but allows ERB formatting inside VSCode
   gem 'htmlbeautifier'
-
   gem 'dockerfile-rails'
 end
 
