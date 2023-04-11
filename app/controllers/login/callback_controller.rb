@@ -24,7 +24,7 @@ module Login
 
     def identity
       @identity ||=
-        OidcClient.new.userinfo!(
+        GoogleOidcClient.new.userinfo!(
           redirect_uri: login_callback_new_url,
           code: params['code']
         )

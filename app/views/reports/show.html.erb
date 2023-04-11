@@ -1,1 +1,4 @@
-<%= report.spendable %>
+<div class="flex flex-col">
+  <div><%= number_to_currency(report.spendable) %></div>
+  <div><%= number_to_currency(report.spendable_today) %></div>
+</div>
