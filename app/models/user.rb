@@ -6,17 +6,15 @@ class User < ApplicationRecord
   has_many :goals, dependent: :destroy
 
   attribute :preferences, PreferencesType.new
-  validate :preferences_valid?
+  before_validation :validate_preferences
 
   validates :email, presence: true
 
   private
 
-  def preferences_valid?
+  def validate_preferences
     return if preferences.valid?
 
-    preferences.errors.each do |error|
-      errors.add(:preferences, error.full_message)
-    end
+    errors.merge!(preferences)
   end
 end

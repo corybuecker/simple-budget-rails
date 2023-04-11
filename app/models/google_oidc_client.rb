@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class OidcClient
+class GoogleOidcClient
   ISSUER = 'https://accounts.google.com'
 
   def initialize
